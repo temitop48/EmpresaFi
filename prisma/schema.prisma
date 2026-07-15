@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model VentureReport {
+  id                     String   @id @default(cuid())
+  ventureName            String
+  businessIdea           String
+  location               String
+  industry               String
+  targetCustomers        String
+  budget                 String?
+  goal                   String
+  ventureType            String
+
+  ventureScore           Int
+  marketOpportunityScore Int
+  investorReadinessScore Int
+
+  riskLevel              String
+  revenuePotential       String
+  startupCostEstimate    String
+
+  executiveSummary       String
+  marketAnalysis         String
+  competitorAnalysis     String
+  businessModel          String
+  pricingStrategy        String
+  financialProjection    String
+  growthStrategy         String
+  investorBrief          String
+
+  keyRisks               Json
+  roadmap                Json
+  insights               Json?
+
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}

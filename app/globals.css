@@ -1,26 +1,693 @@
 @import "tailwindcss";
 
+/* ==========================================================
+   EmpresaFi Global Theme
+   ----------------------------------------------------------
+   Founder Mission Control Design System
+   Optimized for Next.js 16 and Tailwind CSS v4
+========================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core */
+  --background: #050816;
+  --foreground: #f8fafc;
+
+  /* Brand */
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --secondary: #38bdf8;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Surfaces */
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-hover: rgba(255, 255, 255, 0.1);
+  --surface-strong: rgba(255, 255, 255, 0.14);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --muted: #94a3b8;
+
+  /* Radius */
+  --radius: 24px;
 }
 
+/* Tailwind v4 theme tokens */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ==========================================================
+   Base
+========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  margin: 0;
+
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    var(--font-geist-sans),
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(56, 189, 248, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #030712 0%,
+      #050816 45%,
+      #010409 100%
+    );
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==========================================================
+   Typography
+========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  color: white;
+
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+p {
+  color: rgba(226, 232, 240, 0.82);
+  line-height: 1.7;
+}
+
+strong {
+  color: white;
+}
+
+/* ==========================================================
+   Links
+========================================================== */
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.95;
+}
+
+/* ==========================================================
+   Forms
+========================================================== */
+
+input,
+textarea,
+select {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+select {
+  color-scheme: dark;
+}
+
+/* ==========================================================
+   Selection
+========================================================== */
+
+::selection {
+  color: white;
+  background: rgba(139, 92, 246, 0.35);
+}
+
+/* ==========================================================
+   Scrollbar
+========================================================== */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(139, 92, 246, 0.45)
+    rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+
+  background: rgba(139, 92, 246, 0.45);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.65);
+  background-clip: padding-box;
+}
+
+/* ==========================================================
+   Reusable UI Classes
+========================================================== */
+
+/* Glass card */
+.glass {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.glass:hover {
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+/* Strong glass card */
+.glass-strong {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+
+  background: var(--surface-strong);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* Primary EmpresaFi panel */
+.venture-panel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* Softer content panel */
+.venture-panel-soft {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Premium border */
+.premium-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Soft glow */
+.glow {
+  box-shadow:
+    0 0 25px rgba(99, 102, 241, 0.18),
+    0 0 60px rgba(99, 102, 241, 0.08);
+}
+
+/* Hover lift */
+.hover-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* EmpresaFi gradient text */
+.gradient-text,
+.venture-gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #c4b5fd 45%,
+      #67e8f9 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium button glow */
+.button-glow:hover {
+  box-shadow:
+    0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+/* Dashboard grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 36px 36px;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  position: absolute;
+  inset: 0;
+
+  padding: 1px;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.5),
+      rgba(56, 189, 248, 0.4)
+    );
+
+  content: "";
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+
+  pointer-events: none;
+}
+
+/* Report cover marker */
+.report-cover {
+  position: relative;
+}
+
+/* ==========================================================
+   Small Animations
+========================================================== */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.soft-pulse {
+  animation: soft-pulse 2.2s ease-in-out infinite;
+}
+
+.shimmer {
+  animation: shimmer 2.4s ease-in-out infinite;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================
+   Responsive Refinements
+========================================================== */
+
+@media (max-width: 640px) {
+  .venture-panel,
+  .venture-panel-soft,
+  .glass,
+  .glass-strong {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+/* ==========================================================
+   EmpresaFi Printable Report
+========================================================== */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    width: 100%;
+    min-height: auto;
+
+    background: #ffffff !important;
+  }
+
+  body {
+    margin: 0;
+
+    color: #111827 !important;
+    font-size: 10.5pt;
+
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Hide navigation and report actions */
+  .report-screen-only {
+    display: none !important;
+  }
+
+  /* Main printable report wrapper */
+  #empresafi-report {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  #empresafi-report > div {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Remove background effects, decorative glows, and page artwork */
+  #empresafi-report .pointer-events-none {
+    display: none !important;
+  }
+
+  #empresafi-report .grid-bg {
+    background-image: none !important;
+  }
+
+  /* Dedicated executive cover page */
+  #empresafi-report .report-cover {
+    min-height: 250mm;
+
+    display: flex !important;
+    align-items: center;
+
+    padding: 14mm !important;
+
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #empresafi-report .report-cover > div {
+    width: 100%;
+  }
+
+  /* Convert dashboard surfaces into print-friendly cards */
+  #empresafi-report section,
+  #empresafi-report article {
+    color: #111827 !important;
+    background: #ffffff !important;
+
+    border-color: #d1d5db !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  #empresafi-report .venture-panel,
+  #empresafi-report .venture-panel-soft,
+  #empresafi-report .glass,
+  #empresafi-report .glass-strong {
+    color: #111827 !important;
+    background: #ffffff !important;
+
+    border-color: #d1d5db !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Convert all report text to dark print colors */
+  #empresafi-report h1,
+  #empresafi-report h2,
+  #empresafi-report h3,
+  #empresafi-report h4,
+  #empresafi-report h5,
+  #empresafi-report h6,
+  #empresafi-report p,
+  #empresafi-report span,
+  #empresafi-report li,
+  #empresafi-report strong {
+    color: #111827 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #111827 !important;
+  }
+
+  #empresafi-report .gradient-text,
+  #empresafi-report .venture-gradient-text {
+    color: #111827 !important;
+    background: none !important;
+
+    background-clip: initial;
+    -webkit-background-clip: initial;
+
+    -webkit-text-fill-color: #111827 !important;
+  }
+
+  #empresafi-report p,
+  #empresafi-report li {
+    line-height: 1.5 !important;
+  }
+
+  /* Preserve complete cards where practical */
+  #empresafi-report article,
+  #empresafi-report .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Sections may contain several cards and can span multiple pages.
+   * This prevents large sections from being pushed entirely to the
+   * following page.
+   */
+  #empresafi-report section:not(.report-cover),
+  #empresafi-report .print-allow-break {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Keep headings attached to their following content */
+  #empresafi-report h1,
+  #empresafi-report h2,
+  #empresafi-report h3,
+  #empresafi-report h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Preserve chart and radar SVGs */
+  #empresafi-report svg {
+    max-width: 100% !important;
+
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /*
+   * Prevent Recharts containers from collapsing during printing.
+   * Their inline heights remain the primary source of truth.
+   */
+  #empresafi-report .recharts-responsive-container {
+    min-height: 280px !important;
+  }
+
+  #empresafi-report .recharts-wrapper,
+  #empresafi-report .recharts-surface {
+    overflow: visible !important;
+  }
+
+  /* Hide interactive controls in printable output */
+  #empresafi-report button,
+  #empresafi-report .roadmap-interactive-controls {
+    display: none !important;
+  }
+
+  /* Prevent browser-added URL text after links */
+  #empresafi-report a::after {
+    content: none !important;
+  }
+
+  /* Avoid accidental horizontal overflow */
+  #empresafi-report,
+  #empresafi-report * {
+    max-width: 100%;
+  }
 }
