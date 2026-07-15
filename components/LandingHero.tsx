@@ -60,14 +60,18 @@ export function LandingHero() {
         {/* CTA */}
 
         <div className="mt-12 flex flex-col gap-5 sm:flex-row">
-          <Link
-            href="/analyze"
-            className="inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-white"
-          >
-            Analyze My Business Idea
+          <a
+  href="/analyze"
+  style={{
+    color: "#0f172a",
+    WebkitTextFillColor: "#0f172a",
+  }}
+  className="inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-[1.02] hover:bg-slate-100"
+>
+  Analyze My Business Idea
 
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+  <ArrowRight className="ml-2 h-5 w-5" />
+</a>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-white/70 backdrop-blur-xl">
             Built for the OKX AI Genesis Hackathon
