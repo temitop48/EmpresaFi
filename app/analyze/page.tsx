@@ -1,5 +1,6 @@
 // app/analyze/page.tsx
 
+import Image from "next/image";
 import { AppLogo } from "@/components/AppLogo";
 import { PageBackground } from "@/components/PageBackground";
 import { VentureForm } from "@/components/VentureForm";
@@ -18,6 +19,7 @@ export default function AnalyzePage() {
       <PageBackground />
 
       <div className="mx-auto max-w-[1500px]">
+        {/* Navigation */}
         <nav className="mb-8 flex items-center justify-between gap-4">
           <AppLogo />
 
@@ -27,8 +29,31 @@ export default function AnalyzePage() {
           </div>
         </nav>
 
-        <section className="mb-8 rounded-[2rem] border border-white/8 bg-white/[0.025] px-5 py-6 backdrop-blur md:px-8 md:py-8">
+        {/* Hero Section */}
+        <section className="mb-8 rounded-[2rem] border border-white/8 bg-white/[0.025] px-5 py-8 backdrop-blur md:px-8 md:py-10">
           <div className="max-w-3xl">
+            {/* Brand */}
+            <div className="mb-6 flex items-center gap-4">
+              <Image
+                src="/empresafi-logo.png"
+                alt="EmpresaFi Logo"
+                width={64}
+                height={64}
+                priority
+                className="rounded-2xl shadow-xl"
+              />
+
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight text-white">
+                  EmpresaFi
+                </h2>
+
+                <p className="text-sm font-medium tracking-wide text-violet-300">
+                  AI Venture Intelligence Platform
+                </p>
+              </div>
+            </div>
+
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-violet-300/70">
               AI Venture Intelligence
             </p>
@@ -37,10 +62,13 @@ export default function AnalyzePage() {
               Analyze your next business idea.
             </h1>
 
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/50 md:text-base">
-              EmpresaFi combines market, financial, risk, growth, and investor
-              intelligence to transform a raw idea into an investor-ready
-              business report.
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/55 md:text-base">
+              EmpresaFi transforms startup ideas into investor-ready venture
+              intelligence by combining AI reasoning with structured business
+              analysis. Generate venture scores, market opportunity insights,
+              SWOT analysis, Business Model Canvas, financial projections,
+              investor readiness assessments, and actionable strategic
+              recommendations in one professional report.
             </p>
           </div>
         </section>

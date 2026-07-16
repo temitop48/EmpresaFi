@@ -1,5 +1,6 @@
 // components/LandingHero.tsx
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -30,12 +31,37 @@ export function LandingHero() {
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[170px]" />
 
       <div className="mx-auto max-w-7xl">
+        {/* =======================================================
+            EmpresaFi Branding
+        ======================================================= */}
+
+        <div className="mb-10 flex items-center gap-4">
+          <Image
+            src="/empresafi-logo.png"
+            alt="EmpresaFi Logo"
+            width={56}
+            height={56}
+            priority
+            className="rounded-2xl shadow-xl shadow-violet-500/20"
+          />
+
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight">
+              EmpresaFi
+            </h2>
+
+            <p className="text-sm text-white/60">
+              AI Venture Intelligence Platform
+            </p>
+          </div>
+        </div>
+
         {/* Badge */}
 
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/10 px-5 py-2 text-sm text-violet-100 backdrop-blur-xl">
           <Sparkles className="h-4 w-4" />
 
-          AI Venture Intelligence Platform
+          The AI Venture Intelligence Platform
         </div>
 
         {/* Headline */}
@@ -61,17 +87,17 @@ export function LandingHero() {
 
         <div className="mt-12 flex flex-col gap-5 sm:flex-row">
           <a
-  href="/analyze"
-  style={{
-    color: "#0f172a",
-    WebkitTextFillColor: "#0f172a",
-  }}
-  className="inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-[1.02] hover:bg-slate-100"
->
-  Analyze My Business Idea
+            href="/analyze"
+            style={{
+              color: "#0f172a",
+              WebkitTextFillColor: "#0f172a",
+            }}
+            className="inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-[1.02] hover:bg-slate-100"
+          >
+            Analyze My Business Idea
 
-  <ArrowRight className="ml-2 h-5 w-5" />
-</a>
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-white/70 backdrop-blur-xl">
             Built for the OKX AI Genesis Hackathon
@@ -103,36 +129,25 @@ export function LandingHero() {
           {[
             {
               icon: BrainCircuit,
-
               title: "Business Intelligence",
-
               text:
                 "Validate ideas with AI-powered market, customer and competitor intelligence.",
             },
-
             {
               icon: ChartNoAxesCombined,
-
               title: "Financial Intelligence",
-
               text:
                 "Estimate startup costs, revenue potential, pricing strategy and business viability.",
             },
-
             {
               icon: ShieldCheck,
-
               title: "Risk Intelligence",
-
               text:
                 "Identify execution risks, funding readiness and strategic weaknesses before launch.",
             },
-
             {
               icon: Building2,
-
               title: "Founder Intelligence",
-
               text:
                 "Receive actionable recommendations, investor insights and execution roadmaps.",
             },
@@ -185,15 +200,10 @@ export function LandingHero() {
 
               <ul className="mt-5 space-y-4 text-white/70">
                 <li>✓ Executive Intelligence Report</li>
-
                 <li>✓ Market & Competitor Analysis</li>
-
                 <li>✓ Financial Projection</li>
-
                 <li>✓ Investor Readiness</li>
-
                 <li>✓ Business Roadmap</li>
-
                 <li>✓ Founder AI Recommendations</li>
               </ul>
             </div>

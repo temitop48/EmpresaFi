@@ -1,0 +1,22 @@
+import Image from "next/image";
+
+export default function Loading() {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-[#050816]">
+      <div className="flex flex-col items-center gap-5">
+        <Image
+          src="/empresafi-logo.png"
+          alt="EmpresaFi"
+          width={70}
+          height={70}
+          priority
+          className="animate-pulse"
+        />
+
+        <p className="text-zinc-400">
+          Building Venture Intelligence...
+        </p>
+      </div>
+    </main>
+  );
+}

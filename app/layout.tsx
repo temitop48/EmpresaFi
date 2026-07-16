@@ -13,7 +13,7 @@ const geistSans = Geist({
 });
 
 /**
- * Monospace font used for code snippets and technical UI.
+ * Monospace font used for technical UI and code snippets.
  */
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -21,37 +21,28 @@ const geistMono = Geist_Mono({
 });
 
 /**
- * Global metadata used for SEO, browser tabs,
- * and social sharing.
+ * Global metadata shared across the entire application.
  */
 export const metadata: Metadata = {
+  metadataBase: new URL("https://empresa-fi.vercel.app"),
+
   title: {
-    default: "EmpresaFi | AI Venture Intelligence Platform",
+    default: "EmpresaFi | The AI Venture Intelligence Platform",
     template: "%s | EmpresaFi",
   },
 
   description:
-    "Transform any business idea into an investor-ready venture using AI-powered market intelligence, financial analysis, risk assessment, and founder guidance.",
+    "Transform startup ideas into investor-ready ventures using AI-powered venture intelligence, market research, SWOT analysis, Business Model Canvas, financial projections, investor readiness, and strategic founder guidance.",
 
   applicationName: "EmpresaFi",
 
-  keywords: [
-    "EmpresaFi",
-    "AI",
-    "Artificial Intelligence",
-    "Startup",
-    "Founder",
-    "Business Validation",
-    "Business Intelligence",
-    "Market Analysis",
-    "Investor Readiness",
-    "Financial Projection",
-    "Venture Intelligence",
-    "Business Planning",
-    "AI Copilot",
-    "OKX AI",
-    "AI Venture Platform",
-  ],
+  generator: "Next.js",
+
+  category: "Business",
+
+  creator: "EmpresaFi",
+
+  publisher: "EmpresaFi",
 
   authors: [
     {
@@ -59,36 +50,86 @@ export const metadata: Metadata = {
     },
   ],
 
-  creator: "EmpresaFi",
+  keywords: [
+    "EmpresaFi",
+    "AI Venture Intelligence",
+    "Startup AI",
+    "Business Validation",
+    "Founder",
+    "Entrepreneur",
+    "Business Model Canvas",
+    "Market Analysis",
+    "Financial Projection",
+    "Investor Readiness",
+    "SWOT Analysis",
+    "Business Planning",
+    "Artificial Intelligence",
+    "AI Startup",
+    "OKX AI",
+    "Venture Intelligence",
+  ],
 
-  publisher: "EmpresaFi",
+  alternates: {
+    canonical: "/",
+  },
 
-  metadataBase: new URL("https://empresafi.vercel.app"),
+  icons: {
+    icon: "/branding/empresafi-logo.png",
+    shortcut: "/branding/empresafi-logo.png",
+    apple: "/branding/empresafi-logo.png",
+  },
 
   openGraph: {
-    title: "EmpresaFi | AI Venture Intelligence Platform",
+    title: "EmpresaFi | The AI Venture Intelligence Platform",
 
     description:
-      "Transform ideas into investor-ready ventures with AI-powered market intelligence, financial analysis, risk assessment, and strategic founder guidance.",
+      "Turn startup ideas into investor-ready ventures using AI-powered market intelligence, financial forecasting, strategic analysis, and founder guidance.",
+
+    url: "https://empresa-fi.vercel.app",
+
+    siteName: "EmpresaFi",
+
+    locale: "en_US",
 
     type: "website",
 
-    siteName: "EmpresaFi",
+    images: [
+      {
+        url: "/empresafi-logo.png",
+        width: 1200,
+        height: 1200,
+        alt: "EmpresaFi Logo",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
 
-    title: "EmpresaFi | AI Venture Intelligence Platform",
+    title: "EmpresaFi | The AI Venture Intelligence Platform",
 
     description:
-      "AI-powered venture intelligence for founders, startups, freelancers, and small businesses.",
+      "AI-powered venture intelligence helping founders transform ideas into investor-ready businesses.",
+
+    images: ["/branding/empresafi-logo.png"],
+
+    creator: "@EmpresaFi",
   },
 
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+
+  themeColor: "#050816",
 };
 
 /**
@@ -102,8 +143,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
       suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
     >
       <body className="min-h-screen bg-[#050816] font-sans text-white antialiased">
         {children}

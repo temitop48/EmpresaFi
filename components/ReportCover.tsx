@@ -18,6 +18,7 @@ import {
 import { buildReportMetadata } from "@/lib/reportMetadata";
 import type { VentureInsights } from "@/lib/insightSchema";
 import { ProvenanceBadge } from "./ProvenanceBadge";
+import Image from "next/image";
 
 type ReportCoverProps = AdvisoryInput & {
   reportId: string;
@@ -109,48 +110,81 @@ export function ReportCover({
       <div className="relative">
         <div className="flex flex-col gap-8 xl:flex-row xl:items-start xl:justify-between">
           <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-3 py-1.5 text-xs font-medium text-violet-200">
-                <Sparkles className="h-3.5 w-3.5" />
-                EmpresaFi Venture Intelligence Report
-              </span>
+  {/* EmpresaFi Branding */}
+  <div className="flex items-center gap-4">
+    <Image
+      src="/empresafi-logo.png"
+      alt="EmpresaFi Logo"
+      width={72}
+      height={72}
+      priority
+      className="rounded-2xl shadow-2xl shadow-violet-500/20"
+    />
 
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3 py-1.5 text-xs text-white/40">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                Confidential planning report
-              </span>
-            </div>
+    <div>
+      <h2 className="text-3xl font-bold tracking-tight text-white">
+        EmpresaFi
+      </h2>
 
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-white/30">
-              Prepared for
-            </p>
+      <p className="mt-1 text-sm font-medium tracking-wide text-violet-200">
+        AI Venture Intelligence Platform
+      </p>
+    </div>
+  </div>
 
-            <h1 className="venture-gradient-text mt-3 text-4xl font-bold tracking-tight md:text-6xl">
-              {ventureName}
-            </h1>
+  <div className="mt-8 flex flex-wrap items-center gap-2">
+    <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-3 py-1.5 text-xs font-medium text-violet-200">
+      <Sparkles className="h-3.5 w-3.5" />
+      Venture Intelligence Report
+    </span>
 
-            <p className="mt-5 max-w-3xl text-sm leading-7 text-white/50 md:text-base">
-              A structured venture assessment combining deterministic
-              scoring, strategic AI reasoning, modeled projections,
-              execution guidance, and investor intelligence.
-            </p>
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3 py-1.5 text-xs text-white/50">
+      <ShieldCheck className="h-3.5 w-3.5" />
+      Confidential Founder Report
+    </span>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              {industry && (
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-black/10 px-4 py-2 text-sm text-white/50">
-                  <Target className="h-4 w-4 text-violet-300" />
-                  {industry}
-                </span>
-              )}
+    <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-xs font-medium text-emerald-200">
+      <BrainCircuit className="h-3.5 w-3.5" />
+      AI Generated
+    </span>
+  </div>
 
-              {location && (
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-black/10 px-4 py-2 text-sm text-white/50">
-                  <MapPinned className="h-4 w-4 text-cyan-300" />
-                  {location}
-                </span>
-              )}
-            </div>
-          </div>
+  <p className="mt-10 text-xs font-semibold uppercase tracking-[0.24em] text-white/30">
+    Prepared for
+  </p>
+
+  <h1 className="venture-gradient-text mt-3 text-4xl font-bold tracking-tight md:text-6xl">
+    {ventureName}
+  </h1>
+
+  <p className="mt-5 max-w-3xl text-sm leading-7 text-white/60 md:text-base">
+    A comprehensive venture intelligence report combining deterministic
+    scoring, AI strategic reasoning, market opportunity analysis,
+    investor readiness assessment, financial modeling, execution
+    roadmap, and actionable founder guidance.
+  </p>
+
+  <div className="mt-8 flex flex-wrap gap-3">
+    {industry && (
+      <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-black/10 px-4 py-2 text-sm text-white/60">
+        <Target className="h-4 w-4 text-violet-300" />
+        {industry}
+      </span>
+    )}
+
+    {location && (
+      <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-black/10 px-4 py-2 text-sm text-white/60">
+        <MapPinned className="h-4 w-4 text-cyan-300" />
+        {location}
+      </span>
+    )}
+
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-black/10 px-4 py-2 text-sm text-white/60">
+      <FileText className="h-4 w-4 text-emerald-300" />
+      Investor Ready
+    </span>
+  </div>
+</div>
 
           <article className="min-w-full rounded-3xl border border-violet-400/20 bg-violet-400/[0.08] p-6 xl:min-w-[20rem]">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/35">
